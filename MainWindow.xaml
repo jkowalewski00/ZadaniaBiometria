@@ -1,0 +1,67 @@
+﻿<Window x:Class="ZadaniaBiometria.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZadaniaBiometria"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Image x:Name="Image" Grid.Row="0" Stretch="Uniform" Margin="5,10,362,2" Width="NaN" Grid.RowSpan="2"/>
+                <Canvas x:Name="HistogramCanvas" Margin="360,118,5,0" Width="NaN" Height="267" VerticalAlignment="Top"/>
+            </Grid>
+
+            <StackPanel Grid.Column="1" Margin="5" VerticalAlignment="Center">
+                <Button x:Name="ChooseFile" HorizontalAlignment="Center" Height="20" VerticalAlignment="Top" Click="OpenPhoto">Open file</Button>
+                <Button x:Name="SaveImage" HorizontalAlignment="Center" Height="20" VerticalAlignment="Top" Click="SavePicture">Save file</Button>
+                <Button x:Name="ResetImage" HorizontalAlignment="Center" Height="20" VerticalAlignment="Top" Click="OriginalImage_ResetValue">Reset</Button>
+                <Button x:Name="Histogram" HorizontalAlignment="Center" Height="20" VerticalAlignment="Top" Click="DisplayHistogram">Histogram</Button>
+                <Button x:Name="Equalize" HorizontalAlignment="Center" Height="20" VerticalAlignment="Top" Click="EqualHistogram">Equalize</Button>
+                <Button x:Name="Otsu" HorizontalAlignment="Center" Height="20" VerticalAlignment="Top" Click="OtsuThereshold">Otsu</Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label x:Name="MinStretchValue" Grid.Column="0" Grid.Row="0">Min stretch value:</Label>
+            <Slider Grid.Column="0" Grid.Row="1" x:Name="MinStretch" Minimum="0" Maximum="255" Value="0" TickFrequency="2" IsSnapToTickEnabled="True" ValueChanged="Stretch_ValueChanged"></Slider>
+            <Label x:Name="MaxStretchValue" Grid.Column="1" Grid.Row="0">Max stretch value:</Label>
+            <Slider Grid.Column="1" Grid.Row="1" x:Name="MaxStretch" Minimum="0" Maximum="255" Value="255" ValueChanged="Stretch_ValueChanged" TickFrequency="1" IsSnapToTickEnabled="True"></Slider>
+
+
+        </Grid>
+    </Grid>
+
+
+</Window>
